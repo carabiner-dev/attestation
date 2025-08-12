@@ -1,3 +1,3 @@
 module github.com/carabiner-dev/attestation
 
-go 1.24.6
+go 1.23.12

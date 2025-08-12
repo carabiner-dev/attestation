@@ -5,4 +5,5 @@ package attestation
 
 type Verification interface {
 	GetVerified() bool
+	MatchesIdentity(any) bool
 }

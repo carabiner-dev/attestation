@@ -3,9 +3,11 @@
 
 package attestation
 
+// PredicateType overloads basic string to express predicate types.
 type PredicateType string
 
-// Statement wraps the attestation types in an interface to access its contents
+// Statement mimica the in-toto statement in an interface to access its contents.
+// and extends it to retrieve any signature verification data.
 type Statement interface {
 	GetSubjects() []Subject
 	GetPredicate() Predicate
@@ -14,6 +16,8 @@ type Statement interface {
 	GetVerification() Verification
 }
 
+// Predicate defines the methods that predicate handlers should implement to
+// be compatible with the framework.
 type Predicate interface {
 	GetType() PredicateType
 	SetType(PredicateType) error
@@ -21,17 +25,23 @@ type Predicate interface {
 	GetData() []byte
 	GetVerification() Verification
 	GetOrigin() Subject
-	SetOrigin(Subject) // TODO origiin
+	SetOrigin(Subject)
 	SetVerification(Verification)
 }
 
-// Subject abstracts a piece of software covered by an attestation
+// Subject abstracts a piece of software covered by an attestation. The purpose
+// of the subject interface is to be able to define more methods on top of the
+// standard in-toto ResourceDescriptor.
 type Subject interface {
 	GetName() string
 	GetUri() string
 	GetDigest() map[string]string
 }
 
+// SubjectsMatch compares two subjects and returns a boolean indicate if they
+// are the same. Ideally this function should compare the full resource descriptor
+// fields but, for now, it only checks that the hashes from s2 which are
+// present in s1 match.
 func SubjectsMatch(s1, s2 Subject) bool {
 	hashes1 := s1.GetDigest()
 	hashes2 := s1.GetDigest()

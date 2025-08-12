@@ -13,6 +13,9 @@ var (
 	ErrStorerMethodNotImplemented  = errors.New("storing method not implemented")
 )
 
+// Repository is an abstraction that stores attestations, serves them or both.
+// Repositories can express their capabilities by implementing the Storer and/or
+// Fetcher interfaces.
 type Repository interface{} //nolint:iface // To be implemented
 
 // AttestationFetcher is the the trait that repositories that can fetch

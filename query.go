@@ -14,7 +14,8 @@ func NewQuery() *Query {
 	}
 }
 
-// Query controls the evaluation of a group of filters.
+// Query abstracts an attestation query. It controls the evaluation of a group
+// of filters to be applied on a set of attestations.
 type Query struct {
 	Filters FilterSet
 }

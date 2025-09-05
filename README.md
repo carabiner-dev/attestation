@@ -72,6 +72,16 @@ git repos or specialized storage systems.
 If repositories don't wish to implement or expose all capabilities they can
 implement only the `Fetcher` the `Storer` interfaces.
 
+### Specialized Vaariants
+
+As we identify useful capabilities, more fetcher and storer types will be defined.
+This allows implementations,such as the
+[Carabiner collector](https://github.com/carabiner-dev/collector), to leverage
+optimized capabilities from the repository implementaion backends.
+
+At present we have defined the `FetcherBySubject`, `FetcherByPredicateType` and
+`FetcherByPredicateTypeAndSubject` specialized fetchers.
+
 ## Attestation Queries
 
 Once a repository is queried and returns a set of attestations, AMPEL can use

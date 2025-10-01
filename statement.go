@@ -44,7 +44,7 @@ type Subject interface {
 // present in s1 match.
 func SubjectsMatch(s1, s2 Subject) bool {
 	hashes1 := s1.GetDigest()
-	hashes2 := s1.GetDigest()
+	hashes2 := s2.GetDigest()
 	if len(hashes1) == 0 {
 		return false
 	}

@@ -60,5 +60,5 @@ func SubjectsMatch(s1, s2 Subject) bool {
 			}
 		}
 	}
-	return matches > 1
+	return matches >= 1
 }

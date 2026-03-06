@@ -49,7 +49,13 @@ type Storer interface {
 // StoreOptions control how attestations are retrieved from a Fetcher. All
 // repositories implementing the Fetcher interface are expected to honor FetchOptions.
 type FetchOptions struct {
+	// Maximum number of attestations to return
 	Limit int
+
+	// Limit data reads to this size (bytes per attestation)
+	MaxReadSize int64
+
+	// Apply query after fetching attestations
 	Query *Query
 }
 
